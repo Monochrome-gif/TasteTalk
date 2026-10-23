@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover restaurants, explore ratings and share honest food reviews with ForkScore.">
+  <title>ForkScore | Restaurant Reviews</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="restaurants-by-country.js" defer></script>
+  <script src="restaurant-photos.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a href="#" class="logo">🍴 Fork<span>Score</span></a>
+    <nav>
+      <a href="#discover">Discover</a>
+      <a href="#live">Reviews</a>
+      <a href="#favorites">Favorites</a>
+      <a href="#about">About</a>
+    </nav>
+    <button class="btn primary" id="openReview">+ Write a review</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">GOOD FOOD. HONEST REVIEWS.</span>
+        <h1>Find your next <span>favorite</span> bite.</h1>
+        <p>Discover amazing restaurants, explore honest ratings,
+          and help others find their next great meal.</p>
+
+        <form id="searchForm" class="search-bar">
+          <input id="searchInput"
+            placeholder="Search restaurant or location..."
+            aria-label="Search restaurants">
+          <select id="cuisineFilter" aria-label="Filter by cuisine">
+            <option value="all">All cuisines</option>
+            <option value="Nigerian">Nigerian</option>
+            <option value="Italian">Italian</option>
+            <option value="Asian">Asian</option>
+            <option value="Cafe">Cafe</option>
+            <option value="Grill">Grill</option>
+            <option value="International">International</option>
+          </select>
+          <button class="btn primary" type="submit">Search</button>
+        </form>
+
+        <p class="trust">⭐ Community-powered restaurant ratings</p>
+      </div>
+      <img class="hero-image"
+        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1100&q=85"
+        alt="Restaurant dining experience">
+    </section>
+
+    <section class="section" id="discover">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">THE COMMUNITY PICKS</span>
+          <h2>Discover restaurants</h2>
+          <p>Explore popular places and find your next meal.</p>
+        </div>
+        <button class="btn secondary" id="showAll">View all</button>
+      </div>
+
+      <div class="chips" id="cuisineChips">
+        <button class="chip active" data-cuisine="all">All places</button>
+        <button class="chip" data-cuisine="Nigerian">Nigerian</button>
+        <button class="chip" data-cuisine="Italian">Italian</button>
+        <button class="chip" data-cuisine="Asian">Asian</button>
+        <button class="chip" data-cuisine="Cafe">Cafes</button>
+        <button class="chip" data-cuisine="Grill">Grills</button>
+        <button class="chip" data-cuisine="International">International</button>
+        <button class="chip" data-cuisine="favorites" id="favorites">
+          ♥ Favorites
+        </button>
+      </div>
+
+      <p class="results-count" id="resultsCount"></p>
+      <div class="restaurant-grid" id="restaurantGrid"></div>
+    </section>
+
+    <section class="section live" id="live">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">LIVE FROM THE COMMUNITY</span>
+          <h2>Latest reviews</h2>
+          <p>New reviews show up here the moment someone posts them.</p>
+        </div>
+        <span class="live-status is-connecting" id="liveStatus" role="status">Connecting…</span>
+      </div>
+      <div class="review-feed" id="reviewFeed"></div>
+    </section>
+
+    <section class="about section" id="about">
+      <span class="eyebrow">HOW IT WORKS</span>
+      <h2>Better food choices start here.</h2>
+      <div class="steps">
+        <article><span>01</span><h3>Discover</h3>
+          <p>Find restaurants by cuisine, name, or location.</p></article>
+        <article><span>02</span><h3>Rate</h3>
+          <p>Share your experience with a star rating and review.</p></article>
+        <article><span>03</span><h3>Save</h3>
+          <p>Keep a list of places you want to visit.</p></article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Have a favorite restaurant?</h2>
+      <p>Your experience could help someone find their next favorite meal.</p>
+      <button class="btn dark" id="ctaReview">Write your first review ↗</button>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" class="logo">🍴 Fork<span>Score</span></a>
+    <p>© <span id="year"></span> ForkScore. Made for food lovers.</p>
+  </footer>
+
+  <dialog id="reviewDialog">
+    <form id="reviewForm">
+      <div class="dialog-heading">
+        <div>
+          <span class="eyebrow">YOUR EXPERIENCE MATTERS</span>
+          <h2>Rate a restaurant</h2>
+        </div>
+        <button type="button" class="close" id="closeDialog"
+          aria-label="Close">×</button>
+      </div>
+
+      <label for="restaurantName">Restaurant name</label>
+      <input id="restaurantName" required maxlength="80" list="restaurantList"
+        autocomplete="off" placeholder="e.g. The Pepper Palm">
+      <datalist id="restaurantList"></datalist>
+
+      <label for="reviewerName">Your name</label>
+      <input id="reviewerName" required maxlength="60"
+        placeholder="Enter your name">
+
+      <label>Your rating</label>
+      <div class="star-picker" id="starPicker" aria-label="Star rating">
+        <button type="button" data-star="1" aria-label="1 star">★</button>
+        <button type="button" data-star="2" aria-label="2 stars">★</button>
+        <button type="button" data-star="3" aria-label="3 stars">★</button>
+        <button type="button" data-star="4" aria-label="4 stars">★</button>
+        <button type="button" data-star="5" aria-label="5 stars">★</button>
+      </div>
+
+      <label for="reviewText">Your review</label>
+      <textarea id="reviewText" required maxlength="1000"
+        rows="4" placeholder="What did you enjoy?"></textarea>
+
+      <button class="btn primary submit-btn" type="submit">
+        Publish review
+      </button>
+      <p class="small-note" id="formNote">Reviews are public. Everyone on ForkScore can see them live.</p>
+    </form>
+  </dialog>
+
+  <dialog id="readDialog">
+    <div class="dialog-heading">
+      <div>
+        <span class="eyebrow">WHAT PEOPLE ARE SAYING</span>
+        <h2 id="readTitle">Reviews</h2>
+        <p class="read-summary" id="readSummary"></p>
+      </div>
+      <button type="button" class="close" id="closeRead" aria-label="Close">×</button>
+    </div>
+    <div class="review-list" id="readList"></div>
+    <button type="button" class="btn primary submit-btn" id="readWrite">Write a review</button>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

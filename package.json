@@ -1,0 +1,1 @@
+{"name":"forkscore","version":"1.0.0","private":true,"description":"ForkScore - restaurant reviews that every visitor sees live","main":"server.js","scripts":{"start":"node server.js"},"engines":{"node":">=18"},"dependencies":{"mongodb":"^6.21.0"}}
