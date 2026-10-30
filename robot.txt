@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://folkscore-3.onrender.com/sitemap.xml
