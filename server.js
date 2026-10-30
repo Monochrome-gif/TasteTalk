@@ -39,12 +39,18 @@ const STATIC_FILES = {
   "/style.css": "style.css",
   "/script.js": "script.js",
   "/restaurants-by-country.js": "restaurants-by-country.js",
-  "/restaurant-photos.js": "restaurant-photos.js"
+  "/restaurant-photos.js": "restaurant-photos.js",
+
+  // SEO files
+  "/sitemap.xml": "sitemap.xml",
+  "/robots.txt": "robots.txt"
 };
 const CONTENT_TYPES = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
-  ".js": "text/javascript; charset=utf-8"
+  ".js": "text/javascript; charset=utf-8",
+  ".xml": "application/xml; charset=utf-8",
+  ".txt": "text/plain; charset=utf-8"
 };
 function reviewHTML(review, showRestaurant) {
   return `
