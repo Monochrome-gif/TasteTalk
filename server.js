@@ -40,10 +40,9 @@ const STATIC_FILES = {
   "/script.js": "script.js",
   "/restaurants-by-country.js": "restaurants-by-country.js",
   "/restaurant-photos.js": "restaurant-photos.js",
-"/ads.txt": "ads.txt"
-  // SEO files
   "/sitemap.xml": "sitemap.xml",
-  "/robots.txt": "robots.txt"
+  "/robots.txt": "robots.txt",
+  "/ads.txt": "ads.txt"
 };
 const CONTENT_TYPES = {
   ".html": "text/html; charset=utf-8",
